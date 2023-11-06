@@ -9,7 +9,20 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _form = GlobalKey<FormState>();
   var _isLogin = true;
+  var _enteredEmail = '';
+  var _enteredPassword = '';
+
+  void _submit() {
+    final isValid = _form.currentState!.validate();
+
+    if (isValid) {
+      _form.currentState!.save();
+      print(_enteredEmail);
+      print(_enteredPassword);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,32 +48,55 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Form(
+                        key: _form,
                         child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        TextFormField(
-                          decoration: const InputDecoration(
-                              label: Text('Enter Your Email :'),
-                              prefixIcon: Icon(Icons.email_outlined)),
-                          keyboardType: TextInputType.emailAddress,
-                          autocorrect: false,
-                          textCapitalization: TextCapitalization.none,
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                              label: Text('Enter Password : '),
-                              prefixIcon: Icon(Icons.lock_outline)),
-                          obscureText: true,
-                          autocorrect: false,
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        )
-                      ],
-                    )),
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                  label: Text('Enter Your Email :'),
+                                  prefixIcon: Icon(Icons.email_outlined)),
+                              keyboardType: TextInputType.emailAddress,
+                              autocorrect: false,
+                              textCapitalization: TextCapitalization.none,
+                              validator: (value) {
+                                if (value == null ||
+                                    !value.contains('@') ||
+                                    value.trim().isEmpty) {
+                                  return 'Please enter a valid email';
+                                }
+                              },
+                              onSaved: (value) {
+                                _enteredEmail = value!;
+                              },
+                            ),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                  label: Text('Enter Password : '),
+                                  prefixIcon: Icon(Icons.lock_outline)),
+                              obscureText: true,
+                              autocorrect: false,
+                              validator: ((value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'please enter a valid password';
+                                }
+                                if (value.length < 6) {
+                                  return 'input a longer password';
+                                }
+                                return null;
+                              }),
+                              onSaved: (value) {
+                                _enteredPassword = value!;
+                              },
+                            ),
+                            const SizedBox(
+                              height: 15,
+                            )
+                          ],
+                        )),
                   ),
                 ),
               ),
@@ -68,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 30,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: _submit,
                 style: ElevatedButton.styleFrom(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
