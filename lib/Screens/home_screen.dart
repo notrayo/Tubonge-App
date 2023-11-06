@@ -12,7 +12,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tubonge App'),
+        title: Text(
+          'Tubonge App',
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
       ),
       body: const Center(
         child: Text('Home screen ndio hii ...'),
