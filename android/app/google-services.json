@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1642601678",
+    "project_id": "tubonge-app-70c7d",
+    "storage_bucket": "tubonge-app-70c7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1642601678:android:a1680313fde7bdec70c49f",
+        "android_client_info": {
+          "package_name": "com.example.tubonge_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJU6BbXUr3sq_QIL2Ffbh66LsINqRq5nM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

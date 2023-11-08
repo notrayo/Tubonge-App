@@ -59,13 +59,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               keyboardType: TextInputType.emailAddress,
                               autocorrect: false,
                               textCapitalization: TextCapitalization.none,
-                              validator: (value) {
+                              validator: ((value) {
                                 if (value == null ||
                                     !value.contains('@') ||
                                     value.trim().isEmpty) {
                                   return 'Please enter a valid email';
                                 }
-                              },
+                                return null;
+                              }),
                               onSaved: (value) {
                                 _enteredEmail = value!;
                               },
