@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:tubonge_app/Screens/chat_screen.dart';
 import 'package:tubonge_app/Screens/login_screen.dart';
-import './Screens/home_screen.dart';
+//import './Screens/home_screen.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:tubonge_app/Screens/splash_screen.dart';
 import 'firebase_options.dart';
 
 ThemeData lightTheme = ThemeData(
@@ -56,8 +58,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Tubonge App',
       theme: lightTheme,
-      initialRoute: '/login',
-      routes: {'/login': (context) => const LoginScreen()},
+      //initialRoute: '/login',
+      // routes: {'/login': (context) => const LoginScreen()},
+
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: ((context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const SplashScreen();
+          }
+          if (snapshot.hasData) {
+            return const ChatScreen();
+          }
+
+          return const LoginScreen();
+        }),
+      ),
     );
   }
 }
