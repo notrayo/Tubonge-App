@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:tubonge_app/Screens/signup_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:tubonge_app/Widgets/user_dp_picker.dart';
 
 final _firebase = FirebaseAuth.instance;
 
@@ -73,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
+                            if (!_isLogin) UserDPImagePickerWidget(),
                             TextFormField(
                               decoration: const InputDecoration(
                                   label: Text('Enter Your Email :'),
@@ -153,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     child: Text(
                       _isLogin
-                          ? 'Create an account'
+                          ? 'New User ? ... Create an account !'
                           : 'I already have an account',
                       style: TextStyle(
                           decoration: TextDecoration.combine(

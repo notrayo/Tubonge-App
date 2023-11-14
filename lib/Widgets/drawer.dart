@@ -13,11 +13,14 @@ class DrawerWidget extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               child: Row(
                 children: const [
-                  Icon(Icons.ac_unit),
-                  SizedBox(
-                    width: 10,
+                  Icon(
+                    Icons.person,
+                    size: 40,
                   ),
-                  Text('Welcome !'),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text('Tubonge App'),
                 ],
               )),
           ListTile(

@@ -14,7 +14,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tubonge App'),
+        title: const Text('Home Screen'),
       ),
       drawer: const DrawerWidget(),
       body: const Center(
