@@ -3,7 +3,12 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class UserDPImagePickerWidget extends StatefulWidget {
-  const UserDPImagePickerWidget({super.key});
+  const UserDPImagePickerWidget({
+    super.key,
+    //required this.onPickImage
+  });
+
+  //final void Function(File pickedImage) onPickImage;
 
   @override
   State<UserDPImagePickerWidget> createState() =>
