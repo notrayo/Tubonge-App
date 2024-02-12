@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 //import 'package:tubonge_app/Screens/signup_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,6 +19,8 @@ class _LoginScreenState extends State<LoginScreen> {
   var _isLogin = true;
   var _enteredEmail = '';
   var _enteredPassword = '';
+  //unitializing image file
+  File? _selectedImage;
 
   void _submit() async {
     final isValid = _form.currentState!.validate();
