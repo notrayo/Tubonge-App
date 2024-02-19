@@ -37,6 +37,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const SizedBox(
                     height: 20,
                   ),
+                  const Text(
+                    '------> user email to be fetched and displayed here',
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   SizedBox(
                     width: 200,
                     child: ElevatedButton(
